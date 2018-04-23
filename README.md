@@ -1,5 +1,5 @@
-# flask_budgy
-A simple Budget app - CS50 project
+# Budgy
+flask_budgy is a simple budget app to record your receipts and expenditures - CS50 project.
 
 Setup commands:
   1. flask db upgrade
