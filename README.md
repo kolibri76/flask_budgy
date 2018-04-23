@@ -4,8 +4,8 @@ flask_budgy is a simple budget app to record your receipts and expenditures.  Th
 Details:
 - Responsive design (in order to use on mobile devices)
 - Admin Interface (manage users & default categories)
-- Option to store attachments (e.g. receipts for expenditures) to transactions
-- Option to store geo location to transactions
+- Option to add attachments (e.g. receipts for expenditures) to transactions
+- Option to add (and display) geo location in transactions
 
 Setup commands:
   1. flask db upgrade
