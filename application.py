@@ -28,6 +28,7 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "sqlite:///{}".format(os.path.join(project_dir, "budgy.db"))
 www_url = 'http://127.0.0.1:5000'
 www_subpath = ''
+google_maps_api_key = 'key_here'
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY')
@@ -544,7 +545,8 @@ def transaction_view(transaction_id):
                                                          ttype_id=row.tcategory.ttype_id, deleted=None).all()
 
         return render_template('transaction_detail.html', title='View transaction', form=form, transaction_id=row.id,
-                               attachment_name=row.attachment_name, attachment_url=row.attachment_url)
+                               attachment_name=row.attachment_name,
+                               attachment_url=row.attachment_url, google_maps_api_key=google_maps_api_key)
     else:
         abort(403)
 

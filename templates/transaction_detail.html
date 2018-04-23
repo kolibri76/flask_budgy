@@ -41,6 +41,6 @@
     <div id="map" style="width:100%;height:300px;margin-top:10px"></div>
 
     <script src="{{url_for('static', filename='geo.js')}}" marker_draggable="false"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAFgK3Mh-hrPbXOmmU3H9rrUleu4UdM4&callback=showMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=showMap"></script>
 
 {% endblock %}
