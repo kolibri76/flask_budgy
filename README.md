@@ -19,4 +19,4 @@ Login to app:
   
   
 Screenshot:
-![image](https://user-images.githubusercontent.com/36189564/39129788-a7a87fb2-470b-11e8-8cbe-9b9864975418.png)
+![image](https://user-images.githubusercontent.com/36189564/39129788-a7a87fb2-470b-11e8-8cbe-9b9864975418.png = 320x568)
