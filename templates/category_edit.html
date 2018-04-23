@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+            <p> {{ form.ttype.label }}:
+            {% if edit == True %}
+                {{ form.ttype.data.name }}
+            {% else %}
+                {{ form.ttype }}
+            {% for error in form.ttype.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            </p>
+        {% endif %}
+        <p>
+            {{ form.name.label }}:
+            {{ form.name }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ wtf.form_field(form.submit, value="Save", button_map={'submit':'primary'}) }}</p>
+    </form>
+    {% if edit == True %}
+    <form action="{{ url_for('category_del', tcategory_id=form.id.data) }}" method="GET">
+        {{ wtf.form_field(form.submit, value="Delete Entry", onClick="return confirm('delete this transaction?')", button_map={'submit':'primary'}) }}
+    </form>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div align="center">
+        <div style="margin-bottom:10px">
+         <button type=button class="btn btn-primary" onclick="window.location.href = '{{ url_for('transaction_edit', transaction_id=transaction_id) }}';">Edit</button>
+        </div>
+            <table class="table table-striped">
+            <thead>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>{{ form.date.label }}:</b></td>
+                    <td>{{ form.date.data.strftime("%Y-%m-%d") }}</td>
+                </tr>
+                <tr>
+                    <td><b>{{ form.tcategory.label }}:</b></td>
+                    <td>{{ form.tcategory.data.name }}</td>
+                </tr>
+                <tr>
+                    <td><b>{{ form.amount.label }}:</b></td>
+                    <td>{{ form.amount.data }}</td>
+                </tr>
+                <tr>
+                    <td><b>{{ form.details.label }}:</b></td>
+                    <td>{{ form.details.data }}</td>
+                </tr>
+                {% if attachment_url %}
+                <tr>
+                    <td><b>Attachment:</b></td>
+                    <td><a href="{{ attachment_url }}">{{ attachment_name }}</a></td>
+                </tr>
+                {% endif %}
+            </tbody>
+            </table>
+            <p style="display:none;">{{ form.geo_lat(id='geo_lat') }}</p>
+            <p style="display:none;">{{ form.geo_lng(id='geo_lng') }}</p>
+    </div>
+
+    <div id="map" style="width:100%;height:300px;margin-top:10px"></div>
+
+    <script src="{{url_for('static', filename='geo.js')}}" marker_draggable="false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAFgK3Mh-hrPbXOmmU3H9rrUleu4UdM4&callback=showMap"></script>
+
+{% endblock %}

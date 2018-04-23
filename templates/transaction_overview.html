@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block app_content %}
+        {% if title != "Overview" %}
+            <div style="margin-bottom:10px">
+            <a href="{{ url_for('transaction_add', ttype_id=ttype_id) }}" class="btn btn-primary" role="button">Add new</a>
+            </div>
+        {% endif %}
+        {% for month_year in rows|groupby('date.month')|reverse %}
+            <p><b>{{ title }}  {{ month_year.list[0].date.strftime("%B-%Y") }}</b></p>
+            <table class="table table_overview table-striped table-hover">
+              <thead class="bg-secondary text-white">
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Details</th>
+                  <th scope="col">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for row in month_year.list %}
+                <tr id="{{ row.id }}" class="ttype_id{{ row.tcategory.ttype_id }}" onclick="window.location.href = '{{ url_for('transaction_view', transaction_id=row.id) }}';">
+                    <td>{{ row.date.strftime('%a, %m-%d') }}</td>
+                    <td>{{ row.tcategory.name }}</td>
+                    <td>{{ row.details }}</td>
+                    <td>{{ row.amount }}</td>
+                </tr>
+              {% endfor %}
+                <tr class="bg-secondary text-white">
+                    <th>Total</th>
+                    <th></th>
+                    <th></th>
+                    <th>{{ month_year[1] |sum(attribute="amount")|round(2) }}</th>
+                </tr>
+              </tbody>
+            </table>
+        {% endfor %}
+{% endblock %}

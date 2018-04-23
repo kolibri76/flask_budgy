@@ -1,1 +1,102 @@
-/* center form controls */
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+
+.table {
+    text-align: left;
+}
+
+.table td {
+    word-break: break-all;
+}
+
+.table td:first-child {
+    min-width: 90px;
+}
+
+.table-hover tbody tr:hover td {
+    color: white;
+    background-color: #007bff;
+}
+
+/* colors for row entries in transaction overview */
+.ttype_id1 {
+    color: green;
+}
+
+.ttype_id2 {
+    color: red;
+}
+
+
+/* xs < 768 */
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 0.7em;
+    }
+    .btn {
+    font-size:12px;
+    padding:4px 6px;
+  }
+
+    nav .navbar-brand{
+    /* size for brand */
+    font-size: large;
+    }
+
+}
+
+/* sm */
+@media screen and (min-width: 768px) {
+    body {
+        font-size: 1em;
+    }
+  .btn {
+    font-size:12px;
+    padding:6px 12px;
+  }
+}
+
+/* md */
+@media screen and (min-width: 992px) {
+    body {
+        font-size: 1.2em;
+    }
+     .btn {
+    font-size:14px;
+    padding:8px 12px;
+  }
+}
+
+/* lg */
+@media screen and (min-width: 1200px) {
+    body {
+        font-size: 1.3em;
+    }
+    .btn {
+    padding:10px 16px;
+    font-size:18px;
+  }
+}

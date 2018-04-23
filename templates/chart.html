@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block app_content %}
+        <div style="margin-bottom:10px">
+            <a href="{{ url_for('transaction_add', ttype_id=2) }}" class="btn btn-primary" role="button">Add Expenditure</a>
+            <a href="{{ url_for('transaction_add', ttype_id=1) }}" class="btn btn-primary" role="button">Add Receipt</a>
+        </div>
+        <div id={{ chartID|safe }} class="chart"></div>
+        <div>
+            <button id="large" class="btn btn-primary">Large</button>
+            <button id="small" class="btn btn-primary">Small</button>
+        </div>
+
+		<script>
+			var chart_id = {{ chartID|safe }}
+			var chart = {{ chart|safe }}
+			var title = {{ chart_title|safe }}
+			var subtitle = {{chart_subtitle|safe }}
+			var xAxis = {{ xAxis|safe }}
+			var yAxis = {{ yAxis|safe }}
+			var series = {{ series|safe }}
+		</script>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="{{url_for('static', filename='chart.js')}}"></script>
+
+{% endblock %}

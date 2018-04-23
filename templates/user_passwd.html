@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div style="margin-top:50px">
+        <form action="{{ url_for('change_passwd') }}" method="POST">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.password(size=20) }}
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.new_password(size=20) }}
+                {% for error in form.new_password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.confirm (size=20) }}
+                {% for error in form.confirm.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ wtf.form_field(form.submit, button_map={'submit':'primary'}) }}</p>
+        </form>
+    </div>
+{% endblock %}

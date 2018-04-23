@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block app_content %}
+        <a href="{{ url_for('category_add') }}" class="btn btn-primary" role="button">Add new</a>
+
+        {% for ttype in rows|groupby('ttype_id') %}
+          <table class="table table table-sm table-striped table-hover" style="background-color: #e6f7ff">
+                <thead class="p-3 mb-2 bg-secondary text-white">
+                    <tr>
+                        <th class="col-xs-1 col-sm-1 col-md-1"> {{ ttype.list[0].ttype.name }} Categories</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tcategory in ttype.list %}
+                    <tr id="{{ tcategory.id }}" class="ttype_id{{ tcategory.ttype.id }}" onclick="window.location.href = '{{ url_for('category_edit', tcategory_id=tcategory.id) }}';">
+                        <td class="col-xs-1 col-sm-1 col-md-1">{{ tcategory.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+{% endblock %}
