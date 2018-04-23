@@ -10,7 +10,8 @@ Details:
 Setup commands:
   1. flask db upgrade
   2. python manage.py init_db
-  3. flask run
+  3. adjust config parameters in application.py
+  4. flask run
   
 Login to app:
   user: admin@budgy.tld
