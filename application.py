@@ -28,7 +28,7 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "sqlite:///{}".format(os.path.join(project_dir, "budgy.db"))
 www_url = 'http://127.0.0.1:5000'
 www_subpath = ''
-google_maps_api_key = 'key_here'
+google_maps_api_key = os.environ.get('GOOGLE_API_KEY')
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY')
@@ -464,7 +464,8 @@ def transaction_add(ttype_id):
 
         return redirect(url_for('index'))
 
-    return render_template('transaction_edit.html', title='Add transaction', form=form, ttype_id=ttype_id)
+    return render_template('transaction_edit.html', title='Add transaction', form=form, ttype_id=ttype_id,
+                           google_maps_api_key=google_maps_api_key)
 
 
 @app.route('/transaction_edit/<int:transaction_id>', methods=['GET', 'POST'])
@@ -507,7 +508,8 @@ def transaction_edit(transaction_id):
             return redirect(url_for('index'))
 
         return render_template('transaction_edit.html', title='Change transaction', form=form, edit=True,
-                               attachment_name=row.attachment_name, attachment_url=row.attachment_url)
+                               attachment_name=row.attachment_name, attachment_url=row.attachment_url,
+                               google_maps_api_key=google_maps_api_key)
     else:
         abort(403)
 

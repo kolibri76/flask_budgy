@@ -7,12 +7,14 @@ Details:
 - Option to add attachments (e.g. receipts for expenditures) to transactions
 - Option to add (and display) geo location in transactions
 
-Setup commands:
-  1. flask db upgrade
-  2. python manage.py init_db
-  3. adjust config parameters in application.py
-  4. flask run
-  
+Setup:
+  1. 1. Install required libraries (requirements.txt)
+  2. set env variables
+  3. flask db upgrade
+  4. python manage.py init_db
+  5. adjust config parameters in application.py
+  6. flask run
+
 Login to app:
   user: admin@budgy.tld
   pw: password
