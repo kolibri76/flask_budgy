@@ -16,5 +16,9 @@ Setup:
   6. flask run
 
 Login to app:
-  user: admin@budgy.tld
-  pw: password
+  user:admin@budgy.tld
+  pw:password
+  
+  
+Screenshot:
+![image](https://user-images.githubusercontent.com/36189564/39130021-68c201aa-470c-11e8-9e7e-13ff96124508.png)
